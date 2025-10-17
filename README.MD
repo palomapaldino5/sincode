@@ -49,6 +49,7 @@ A UC visa aplicar metodologias ágeis e tecnologias modernas para a criação de
 
 - 3.1: boas práticas da subfunção 2.1
 - 4.4: controle de versão da subfunção 2.1
-- entre no site para gerar gitignore : https://www.toptal.com/developers/gitignore/api/django
+- Entre no site para gerar gitignore : https://www.toptal.com/developers/gitignore/api/django
 - Entre no gitthub e crie novo repositório :  https://github.com/palomapaldino5/sincode.git
-- Usar commitespecificando a tarefa commit -m "<<codigo-task>> <<mensagem>> <<#status>>"
+- Usa commit - m especificando a tarefa commit -m "<<codigo-task>> <<mensagem>> <<#status>>"
+- 
