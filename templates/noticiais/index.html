@@ -1,410 +1,60 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+{% load static %}
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - SINDCODE Brasília</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code&display=swap" rel="stylesheet">
-    <style>
-        /* Estilização Geral */
-        :root {
-            --primary-color: #34568B;
-            --secondary-color: #FF6F61;
-            --background-color: #F8F9FA;
-            --text-color: #343A40;
-            --card-bg: #FFFFFF;
-            --border-color: #E9ECEF;
-            --code-bg: #282c34;
-            --code-text: #abb2bf;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        /* Cabeçalho */
-        .header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-            border-bottom: 5px solid var(--secondary-color);
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        .header p {
-            margin: 0.5rem 0 0;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Conteúdo Principal */
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        h2 {
-            text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-
-        /* Estilo do Acordeão (FAQ) */
-        .faq-item {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-        }
-
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            background-color: var(--card-bg);
-            border: none;
-            width: 100%;
-            text-align: left;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--primary-color);
-            transition: background-color 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background-color: #f1f3f5;
-        }
-
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
-            background-color: #fff;
-            padding: 0 1.5rem;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 1rem 1.5rem 1.5rem;
-        }
-
-        .faq-answer p {
-            margin-top: 0;
-        }
-
-        .faq-answer .illustration {
-            background-color: #e7f5ff;
-            border-left: 4px solid var(--primary-color);
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-            font-style: italic;
-        }
-
-        .faq-answer .illustration::before {
-            content: '🎨 Ilustração: ';
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        /* Estilo para Blocos de Código */
-        pre {
-            background-color: var(--code-bg);
-            color: var(--code-text);
-            padding: 1rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-        }
-
-        code {
-            font-family: 'Fira Code', monospace;
-            background-color: #e9ecef;
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-            font-size: 0.9em;
-        }
-
-        /* Rodapé */
-        .footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
-            color: #6c757d;
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
+    <title>SindCode</title>
+    <!-- Introdução ao DTL (Django Modelo Language)-->
+    <link rel="stylesheet" href="{% static '/styles/style.css' %}">
 </head>
 <body>
 
-    <header class="header">
-        <h1>SINDCODE Brasília</h1>
-        <p>Sindicato dos Programadores Python</p>
-    </header>
+    <div id="site">
 
-    <main class="container">
-        <h2>Perguntas Frequentes (FAQ)</h2>
-
-        <!-- Item 1 -->
-        <div class="faq-item">
-            <button class="faq-question">1. Como abro o terminal do PyCharm?</button>
-            <div class="faq-answer">
-                <p>O terminal integrado do PyCharm é uma ferramenta poderosa para executar comandos sem sair da IDE. Você pode abri-lo de três formas principais:</p>
-                <ul>
-                    <li><strong>Pelo Menu:</strong> Vá em <code>View > Tool Windows > Terminal</code>.</li>
-                    <li><strong>Pelo Atalho:</strong> Use o atalho <code>Alt + F12</code> (pode variar em alguns sistemas).</li>
-                    <li><strong>Pelo Ícone:</strong> Clique no ícone de terminal na barra de ferramentas na parte inferior da janela.</li>
-                </ul>
-                <div class="illustration">
-                    Pense no PyCharm como sua oficina de programação. O terminal é a sua bancada de trabalho, onde você pode usar ferramentas de linha de comando (como <code>git</code>, <code>pip</code> e <code>python</code>) diretamente no seu projeto.
-                </div>
+        <div id="topo">
+            <div id="midias_buscar">
+                aqui é midias buscar
+            </div>
+            <div id="logo_menu">
+                aqui é logo e o menu
             </div>
         </div>
 
-        <!-- Item 2 -->
-        <div class="faq-item">
-            <button class="faq-question">2. Por que o arquivo .gitignore está tão grande?</button>
-            <div class="faq-answer">
-                <p>O arquivo <code>.gitignore</code> funciona como uma lista de "coisas para não levar na viagem" para o seu repositório Git. Ele diz ao Git quais arquivos e pastas ignorar e não adicionar ao controle de versão.</p>
-                <div class="illustration">
-                    Imagine que seu projeto é uma mala de viagem que você vai despachar (com <code>git push</code>). Você não coloca na mala coisas desnecessárias, pessoais ou que podem ser encontradas no destino, como seu secador de cabelo (que o hotel já tem) ou sua escova de dentes usada.
-                </div>
-                <p>Ele fica grande porque projetos modernos geram muitos arquivos que não devem ser compartilhados, como:</p>
-                <ul>
-                    <li><strong>Ambientes virtuais (<code>venv/</code>, <code>.venv/</code>):</strong> Cada desenvolvedor cria o seu.</li>
-                    <li><strong>Arquivos de cache (<code>__pycache__/</code>):</strong> O Python gera para otimização e eles são recriados automaticamente.</li>
-                    <li><strong>Arquivos da IDE (<code>.idea/</code>, <code>.vscode/</code>):</strong> Configurações pessoais do seu editor.</li>
-                    <li><strong>Arquivos de segredos (<code>.env</code>):</strong> Contém senhas e chaves de API.</li>
-                    <li><strong>Bancos de dados locais (<code>db.sqlite3</code>):</strong> Dados de teste que não devem ir para produção.</li>
-                </ul>
-                <p>Um <code>.gitignore</code> completo garante que apenas o código-fonte essencial seja compartilhado, mantendo o repositório limpo e seguro.</p>
+        <div id="area">
+            <div id="slide_show">
+                aqui é o slide show
             </div>
+
+            <div id="noticias">
+                aqui é a noticias
+            </div>
+
+            <div id="jurídicas">
+                aqui é a jurídicas
+
+            </div>
+
+            <div id="benefícios">
+                aqui é a benefícios
+
+            </div>
+            <div id="nota_pesar">
+                aqui são as notas pesar
+
+            </div>
+
+            <div   id="tv_sindcode" >
+                aqui é a tv sindcode
+
+            </div>
+
+            aqui é a area
         </div>
 
-        <!-- Item 3 -->
-        <div class="faq-item">
-            <button class="faq-question">3. Por que o meu arquivo .env não subiu para o repositório?</button>
-            <div class="faq-answer">
-                <p>E isso é ótimo! O arquivo <code>.env</code> <strong>não deve</strong> subir para o repositório. Ele contém informações sensíveis (segredos), como senhas de banco de dados, chaves de API e outras credenciais.</p>
-                <div class="illustration">
-                    Enviar seu arquivo <code>.env</code> para um repositório público é como tirar uma foto da chave da sua casa, postar nas redes sociais e marcar sua localização. É uma falha de segurança grave!
-                </div>
-                <p>Ele não subiu porque, corretamente, ele está listado no seu arquivo <code>.gitignore</code>. Isso é uma prática de segurança fundamental para proteger suas credenciais e as do seu projeto.</p>
-                <pre><code># Exemplo de linha em um .gitignore
-.env
-                </code></pre>
-            </div>
+        <div id="rodapé">
+            aqui é o rodapé
         </div>
 
-        <!-- Item 4 -->
-        <div class="faq-item">
-            <button class="faq-question">4. O que é o manage.py?</button>
-            <div class="faq-answer">
-                <p>O <code>manage.py</code> é o "canivete suíço" do seu projeto Django. É um script de linha de comando que permite interagir e gerenciar sua aplicação de várias maneiras.</p>
-                 <div class="illustration">
-                    Se o seu projeto Django fosse um carro, o <code>manage.py</code> seria a chave de ignição e o painel de controle. Com ele, você liga o motor (<code>runserver</code>), verifica o óleo (<code>check</code>) e faz a manutenção (<code>migrate</code>).
-                </div>
-                <p>Alguns comandos essenciais que você usa com ele:</p>
-                <ul>
-                    <li><code>python manage.py runserver</code>: Inicia o servidor de desenvolvimento.</li>
-                    <li><code>python manage.py makemigrations</code>: Cria os arquivos de migração baseados nas alterações dos seus models.</li>
-                    <li><code>python manage.py migrate</code>: Aplica as migrações ao banco de dados.</li>
-                    <li><code>python manage.py createsuperuser</code>: Cria um usuário administrador.</li>
-                    <li><code>python manage.py shell</code>: Abre um console Python interativo com o ambiente do seu projeto carregado.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="faq-item">
-            <button class="faq-question">5. No Django, um "projeto" é um conjunto de "aplicativos"?</button>
-            <div class="faq-answer">
-                <p>Exatamente! Essa é a filosofia do Django. A estrutura funciona assim:</p>
-                <ul>
-                    <li><strong>Projeto (Project):</strong> É o contêiner principal. Ele cuida das configurações globais, como o banco de dados, URLs principais e outras definições que se aplicam a tudo.</li>
-                    <li><strong>Aplicativos (Apps):</strong> São os módulos que fazem uma coisa específica. Cada app é responsável por uma funcionalidade do site (ex: um blog, um sistema de autenticação, uma galeria de fotos).</li>
-                </ul>
-                <div class="illustration">
-                    Pense no <strong>Projeto</strong> como uma casa. Os <strong>Aplicativos</strong> são os cômodos dessa casa: a "cozinha" (app de receitas), o "quarto" (app de perfis de usuário), o "banheiro" (app de autenticação). A casa (projeto) conecta todos os cômodos para que funcionem juntos, mas cada um tem sua função bem definida.
-                </div>
-            </div>
-        </div>
-
-        <!-- Item 6 -->
-        <div class="faq-item">
-            <button class="faq-question">6. Os aplicativos Django interagem entre si?</button>
-            <div class="faq-answer">
-                <p>Sim, e essa é uma das grandes vantagens do Django! Os aplicativos são projetados para serem modulares, mas também para se comunicarem.</p>
-                <div class="illustration">
-                    Voltando à analogia da casa: a cozinha (app de receitas) precisa saber quem está logado (informação do app de autenticação) para mostrar as receitas favoritas daquela pessoa. O app de comentários de um blog precisa se conectar ao app de usuários para exibir o autor do comentário.
-                </div>
-                <p>Eles interagem importando modelos, funções ou classes uns dos outros. Por exemplo, um app de `blog` pode importar o modelo `User` do app de `autenticação` para associar um autor a um post.</p>
-            </div>
-        </div>
-
-        <!-- Item 8 -->
-        <div class="faq-item">
-            <button class="faq-question">7. Para que serve uma venv (ambiente virtual)?</button>
-            <div class="faq-answer">
-                <p>Uma <code>venv</code> (Virtual Environment) cria um ambiente Python isolado para o seu projeto. Isso significa que as bibliotecas (pacotes) que você instala para um projeto não interferem nas de outro.</p>
-                <div class="illustration">
-                    Imagine que cada projeto é um chef de cozinha diferente. O "Chef A" precisa da versão antiga de um tempero (uma biblioteca), enquanto o "Chef B" precisa da versão mais nova. Sem uma <code>venv</code>, eles teriam que usar o mesmo pote de tempero, o que causaria um desastre. Com uma <code>venv</code>, cada chef ganha sua própria cozinha com seus próprios ingredientes nas versões exatas que ele precisa.
-                </div>
-                <p>Isso evita o "inferno das dependências", garantindo que seu projeto sempre funcione com as versões corretas das bibliotecas com as quais foi desenvolvido.</p>
-            </div>
-        </div>
-
-        <!-- Item 9 -->
-        <div class="faq-item">
-            <button class="faq-question">8. Como eu crio uma venv?</button>
-            <div class="faq-answer">
-                <p>Criar uma <code>venv</code> é simples. Abra seu terminal na pasta do projeto e execute o seguinte comando:</p>
-                <pre><code>python -m venv nome_da_venv</code></pre>
-                <p>Onde <code>nome_da_venv</code> é o nome que você quer dar à pasta do ambiente virtual. O padrão mais comum é usar <code>venv</code> ou <code>.venv</code>.</p>
-                <ul>
-                    <li><code>python -m venv</code>: Diz ao Python para executar o módulo <code>venv</code>.</li>
-                    <li><code>venv</code>: Este comando criará uma nova pasta com o nome "venv" contendo uma instalação Python isolada.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Item 10 -->
-        <div class="faq-item">
-            <button class="faq-question">9. Como eu ativo uma venv?</button>
-            <div class="faq-answer">
-                <p>Depois de criar a <code>venv</code>, você precisa "entrar" nela. O comando para ativá-la varia conforme o seu sistema operacional:</p>
-                <p><strong>No Windows (PowerShell/CMD):</strong></p>
-                <pre><code>.\nome_da_venv\Scripts\activate</code></pre>
-                <p><strong>No macOS ou Linux:</strong></p>
-                <pre><code>source nome_da_venv/bin/activate</code></pre>
-                <p>Você saberá que funcionou quando o nome da sua venv aparecer no início da linha do terminal, assim: <code>(venv) C:\caminho\do\projeto></code>.</p>
-            </div>
-        </div>
-
-        <!-- Item 11 -->
-        <div class="faq-item">
-            <button class="faq-question">10. Como eu gero um arquivo requirements.txt?</button>
-            <div class="faq-answer">
-                <p>O <code>requirements.txt</code> é a "lista de ingredientes" do seu projeto. Ele lista todos os pacotes Python necessários para que ele funcione.</p>
-                <p>Para gerá-lo, primeiro <strong>ative sua venv</strong> e depois rode o comando:</p>
-                <pre><code>pip freeze > requirements.txt</code></pre>
-                <ul>
-                    <li><code>pip freeze</code>: Lista todos os pacotes instalados no ambiente virtual ativo e suas versões.</li>
-                    <li><code>></code>: É um operador que redireciona a saída do comando anterior para um arquivo.</li>
-                    <li><code>requirements.txt</code>: O nome do arquivo onde a lista será salva.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Item 12 -->
-        <div class="faq-item">
-            <button class="faq-question">11. Como eu instalo as dependências de um requirements.txt?</button>
-            <div class="faq-answer">
-                <p>Quando você baixa um projeto de outra pessoa (ou seu em outra máquina), você precisa instalar todos os "ingredientes" da lista.</p>
-                <p>Primeiro, crie e ative uma nova <code>venv</code> para o projeto. Depois, execute:</p>
-                <pre><code>pip install -r requirements.txt</code></pre>
-                <ul>
-                    <li><code>pip install -r</code>: Diz ao pip para instalar a partir de um arquivo de requerimentos (<code>-r</code>).</li>
-                </ul>
-                <p>O pip lerá o arquivo e instalará cada um dos pacotes listados com as versões especificadas.</p>
-            </div>
-        </div>
-
-        <!-- Item 13 -->
-        <div class="faq-item">
-            <button class="faq-question">12 & 13. Como instalar e por que usar o python-dotenv?</button>
-            <div class="faq-answer">
-                <p>O <code>python-dotenv</code> é uma biblioteca que lê variáveis de ambiente de um arquivo <code>.env</code> e as carrega para o seu projeto, facilitando o acesso a segredos e configurações.</p>
-                <div class="illustration">
-                    Imagine que seu código precisa de uma senha para acessar o banco de dados. Em vez de escrever a senha diretamente no código (o que é inseguro), você a guarda em um cofre (o arquivo <code>.env</code>). O <code>python-dotenv</code> é a chave que abre esse cofre e entrega a senha para o seu código de forma segura, sem que ninguém veja a senha no código-fonte.
-                </div>
-
-                <h4>Como Instalar?</h4>
-                <p>Com sua <code>venv</code> ativa:</p>
-                <pre><code>pip install python-dotenv</code></pre>
-
-                <h4>Como Usar?</h4>
-                <p>1. Crie um arquivo chamado <code>.env</code> na raiz do seu projeto:</p>
-                <pre><code># .env
-SECRET_KEY="sua-chave-super-secreta"
-DATABASE_URL="postgres://user:password@host:port/dbname"
-                </code></pre>
-
-                <p>2. No seu código (por exemplo, no <code>settings.py</code> do Django), carregue as variáveis:</p>
-                <pre><code>from dotenv import load_dotenv
-import os
-
-# Carrega as variáveis do arquivo .env para o ambiente
-load_dotenv()
-
-# Agora você pode acessar as variáveis como se fossem do sistema
-SECRET_KEY = os.getenv('SECRET_KEY')
-DATABASE_URL = os.getenv('DATABASE_URL')
-                </code></pre>
-                <p>Assim, seu código fica limpo, seguro e fácil de configurar em diferentes ambientes (desenvolvimento, produção) apenas trocando o arquivo <code>.env</code>.</p>
-            </div>
-        </div>
-
-    </main>
-
-    <footer class="footer">
-        <p>&copy; 2024 SINDCODE Brasília. Todos os direitos reservados.</p>
-    </footer>
-
-    <script>
-        // Script para o Acordeão
-        const faqItems = document.querySelectorAll('.faq-item');
-
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
-
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-
-                // Fecha todos os itens
-                faqItems.forEach(i => {
-                    i.classList.remove('active');
-                    i.querySelector('.faq-answer').style.maxHeight = null;
-                });
-
-                // Abre o item clicado (se não estava ativo)
-                if (!isActive) {
-                    item.classList.add('active');
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                }
-            });
-        });
-    </script>
+    </div>
 </body>
 </html>
