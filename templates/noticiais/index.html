@@ -1,60 +1,38 @@
-<!DOCTYPE html>
+{% extends 'noticiais/base.html' %}
 {% load static %}
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>SindCode</title>
-    <!-- Introdução ao DTL (Django Modelo Language)-->
-    <link rel="stylesheet" href="{% static '/styles/style.css' %}">
-</head>
-<body>
-
+{% block content %}
     <div id="site">
-
-        <div id="topo">
-            <div id="midias_buscar">
-                aqui é midias buscar
-            </div>
-            <div id="logo_menu">
-                aqui é logo e o menu
-            </div>
+        <div id="slide_show">
+            aqui é o slide show
         </div>
 
-        <div id="area">
-            <div id="slide_show">
-                aqui é o slide show
-            </div>
-
-            <div id="noticias">
-                aqui é a noticias
-            </div>
-
-            <div id="jurídicas">
-                aqui é a jurídicas
-
-            </div>
-
-            <div id="benefícios">
-                aqui é a benefícios
-
-            </div>
-            <div id="nota_pesar">
-                aqui são as notas pesar
-
-            </div>
-
-            <div   id="tv_sindcode" >
-                aqui é a tv sindcode
-
-            </div>
-
-            aqui é a area
+        <div id="noticias">
+            aqui é a noticias
         </div>
 
+        <div id="jurídicas">
+            aqui é a jurídicas
+
+        </div>
+
+        <div id="benefícios">
+            aqui é a benefícios
+
+        </div>
+        <div id="nota_pesar">
+            aqui são as notas pesar
+
+        </div>
+
+        <div   id="tv_sindcode" >
+            aqui é a tv sindcode
+
+        </div>
+
+        aqui é a area
         <div id="rodapé">
             aqui é o rodapé
         </div>
 
     </div>
-</body>
-</html>
+{% endblock %}

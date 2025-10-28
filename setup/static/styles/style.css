@@ -4,7 +4,7 @@
     estilizar um identificador
  */
 body{
-    background-color: black;
+    background-color: #2D276A;
 }
 .para_azul{
     color: blue;
@@ -16,12 +16,22 @@ body{
     border: 2px solid red;
 }
 #midias_buscar {
-    background-color: #3f3f3f;
+    background-color: #00E3A2;
     width: 100%;
     height: 52px;
 }
 #topo_menu{
-    background-color: #FFFFFF;
+    background-color: #FF7F00;
     width: 100%;
     height: 108px;
+}
+main{
+    width:100%;
+    height:1200px;
+    border: 2px solid #aaaaaa;
+    background-color: #2D276A;
+}
+footer{
+    height:67px;
+    background-color: #00AEEF;
 }

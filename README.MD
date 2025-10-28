@@ -52,3 +52,8 @@ A UC visa aplicar metodologias ágeis e tecnologias modernas para a criação de
 - Entre no site para gerar gitignore : https://www.toptal.com/developers/gitignore/api/django
 - Entre no github e crie novo repositório :  https://github.com/palomapaldino5/sincode.git
 - Usa commit - m especificando a tarefa commit -m "<<codigo-task>> <<mensagem>> <<#status>>"
+
+##### *** Aula 4: DRY (Don't Repeat Yourself) - Não seja repetitivo"
+
+index - noticias (principal)
+index - associados
