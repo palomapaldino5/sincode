@@ -55,5 +55,21 @@ A UC visa aplicar metodologias ágeis e tecnologias modernas para a criação de
 
 ##### *** Aula 4: DRY (Don't Repeat Yourself) - Não seja repetitivo"
 
-index - noticias (principal)
-index - associados
+- index - noticias (principal)
+- index - associados
+- extends
+- include 
+- partials
+
+## ** Aula 5: Conclusão"
+
+- Um projeto Django é formado por um ou vários aplicativos
+- O Django nasceu para gerenciar conteudo (indicado para portais e noticiais)
+- O Django é usando por grandes empresas (netflix, Spootify, Instagram)
+- O Django é seguro , python, simples , prático
+- O Django é integrado (Admin, Segurança, Templates)
+- O Django é dívido em camadas
+  - - MVT (model View, template)
+- Mdel é o modelo da aplicação
+- View é o controlador (requisitções[request-response (HTTP)])
+- Template é a parte +
