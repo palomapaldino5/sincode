@@ -61,15 +61,41 @@ A UC visa aplicar metodologias ágeis e tecnologias modernas para a criação de
 - include 
 - partials
 
-## ** Aula 5: Conclusão"
+### ** Módulo 2 - Django ORM e ADMIN
 
-- Um projeto Django é formado por um ou vários aplicativos
-- O Django nasceu para gerenciar conteudo (indicado para portais e noticiais)
-- O Django é usando por grandes empresas (netflix, Spootify, Instagram)
-- O Django é seguro , python, simples , prático
-- O Django é integrado (Admin, Segurança, Templates)
-- O Django é dívido em camadas
-  - - MVT (model View, template)
-- Mdel é o modelo da aplicação
-- View é o controlador (requisitções[request-response (HTTP)])
-- Template é a parte 
+- APRESENTAÇÃO
+- Preparar 
+- nomes dinamicos
+- banco de dados
+- ORM no Django
+- Criar dados
+- Models no Django
+
+#### ** Admin
+
+- Acessar
+- Passar referencia
+- CRUD no Admin
+- Incluir Categorias na Noticiais(1:N)
+- Make-migrations e migrate
+
+###### ** Admin Avançado
+
+- Personalidade admin
+- funcionalidade de publicação
+- Incremental o index(deixar o site bonito)
+
+##### ** Imagens e Filtros
+
+- Caminhos para fotos ( Galeria de fotos)
+- Imagem "not found"
+- Alterar e Imagem no template
+
+#### ** Mecanismo de buscar
+
+- Funcioma de buscar
+- View de buscar
+- 
+
+
+
