@@ -72,4 +72,4 @@ A UC visa aplicar metodologias ágeis e tecnologias modernas para a criação de
   - - MVT (model View, template)
 - Mdel é o modelo da aplicação
 - View é o controlador (requisitções[request-response (HTTP)])
-- Template é a parte +
+- Template é a parte 
