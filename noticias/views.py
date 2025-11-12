@@ -7,7 +7,7 @@ from noticias.models import Categoria, Autor, Noticia
 # se def dentro classe = metodo
 # se def fora classe = função
 def index(request):
-    #return HttpResponse("<h1>Alô Django 2025</h1>")
+    # return HttpResponse("<h1>Alô Django 2025</h1>")
 
     # definindo um mock com dict
     """
@@ -27,12 +27,12 @@ def index(request):
 
     return render(request,
                   'noticias/index.html',
-                  {'cards':categorias})
+                  {'cards': categorias})
 
 
 def autores(request):
     autores = Autor.objects.all()
-    return render(request,'noticias/nossos_autores.html',{'autores':autores})
+    return render(request, 'noticias/nossos_autores.html', {'autores': autores})
 
 
 def noticias_em_destaque(request):

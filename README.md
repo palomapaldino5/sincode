@@ -50,7 +50,7 @@ A UC visa aplicar metodologias ágeis e tecnologias modernas para a criação de
 - 3.1: boas práticas  da subfunção 2.1
 - 4.4: controle de versão da subfunção 2.1
 - Entre no site para gerar gitignore: https://www.toptal.com/developers/gitignore/api/django
-- Entre no github e crie novo repositório: https://github.com/romulodf-cesar/sindcode
+- Entre no github e crie repositório: https://github.com/palomapaldino5/sincode.git
 - Usar commit especificando a tarefa do SCRUM: git commit -m "<<codigo-task>> <<mensagem>> <<#status>>"
 - Aprendi a vincular o post-it
 - Aprender Django Apps

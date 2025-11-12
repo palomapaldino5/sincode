@@ -19,7 +19,6 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -31,7 +30,6 @@ SECRET_KEY = str(os.getenv("SECRET_KEY"))
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -76,18 +74,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'setup.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sindcode_full', # O nome do banco de dados MySQL que você criou
-        'USER': 'root',    # Seu usuário MySQL
+        'NAME': 'sindcodigo',  # O nome do banco de dados MySQL que você criou
+        'USER': 'root',  # Seu usuário MySQL
         'PASSWORD': '',  # Sua senha MySQL
-        'HOST': 'localhost',        # Ou o IP/nome do host onde o MySQL está rodando
-        'PORT': '3306',             # A porta do MySQL (3306 é a padrão)
+        'HOST': 'localhost',  # Ou o IP/nome do host onde o MySQL está rodando
+        'PORT': '3306',  # A porta do MySQL (3306 é a padrão)
         # Outras opções podem ser adicionadas em 'OPTIONS' se necessário
         # ... outras configurações ...
         'OPTIONS': {
@@ -95,7 +92,6 @@ DATABASES = {
         }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -115,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -127,7 +122,6 @@ USE_I18N = True
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
