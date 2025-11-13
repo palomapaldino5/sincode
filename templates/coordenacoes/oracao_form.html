@@ -1,0 +1,13 @@
+{% extends 'coordenacoes/base.html' %}
+{% block content %}
+<h2>Nova Oração</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="texto" class="form-label">Texto da Oração:</label>
+        <textarea name="texto" id="texto" class="form-control" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="/" class="btn btn-secondary">Voltar</a>
+</form>
+{% endblock %}

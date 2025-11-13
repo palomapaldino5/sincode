@@ -40,9 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'noticias.apps.NoticiasConfig',
-    'associados.apps.AssociadosConfig',
+
+    'noticias',
+    'associados',
+    'coordenacoes',  # 👈 adicione esta linha
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
