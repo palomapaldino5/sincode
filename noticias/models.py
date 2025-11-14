@@ -50,11 +50,11 @@ class Noticia(models.Model):
             return self.titulo
 
     
-# estudar o que é ORM (object-relation-mapper)# herança: uma classe herda de outra e implementa suas próprias características
-# Filho(Pai) - utilizo o sinal de (   ) para herança
+# estudar o que é ORM (object-relation-mapper)# herança: uma classe herda de outra e implementa as suas próprias características
+# Filho(Pai) - utilizo o sinal de () para herança
 #a classe é um conjunto de objetos
- #toda classe começa com letra Maíscula(PascalCase)
-        # max_lenght: é o número limite de caracteres
+ #toda a classe começa com letra Maiúscula(PascalCase)
+        # max_length: é o número limite de caracteres
           # null: nenhuma informação
           # blank: string vazia " "   
 

@@ -9,7 +9,7 @@ urlpatterns = [
 from django.contrib import admin
 from django.urls import path, include
 
-urlpatterns = [
+urlpatterns2 = [
     path('admin/', admin.site.urls),
-    path('', include('coordenacoes.urls')),  # 🆕 adiciona o app coordenacoes
+    path('', include('coordenacoes.urls')),  # 🆕 adiciona o ‘app’ coordenações
 ]

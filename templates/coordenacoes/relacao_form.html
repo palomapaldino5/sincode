@@ -1,40 +1,46 @@
 {% extends 'coordenacoes/base.html' %}
+{% block title %}Nova Relação{% endblock %}
 {% block content %}
+
 <h2>Nova Relação Coordenativa</h2>
+
 <form method="post">
     {% csrf_token %}
+
     <div class="mb-3">
-        <label for="oracao_1" class="form-label">Oração 1:</label>
-        <select name="oracao_1" id="oracao_1" class="form-select" required>
-            <option value="">Selecione...</option>
-            {% for o in oracoes %}
-            <option value="{{ o.id }}">{{ o.texto }}</option>
+        <label class="form-label">Unidade 1:</label>
+        <select name="unidade_1" class="form-control" required>
+            {% for u in unidades %}
+                <option value="{{ u.id }}">{{ u.texto }}</option>
             {% endfor %}
         </select>
     </div>
+
     <div class="mb-3">
-        <label for="conector" class="form-label">Conector:</label>
-        <select name="conector" id="conector" class="form-select" required>
-            <option value="">Selecione...</option>
+        <label class="form-label">Conector:</label>
+        <select name="conector" class="form-control" required>
             {% for c in conectores %}
-            <option value="{{ c.id }}">{{ c.texto }} ({{ c.tipo_relacao.nome }})</option>
+                <option value="{{ c.id }}">{{ c.texto }} ({{ c.tipo_relacao.nome }})</option>
             {% endfor %}
         </select>
     </div>
+
     <div class="mb-3">
-        <label for="oracao_2" class="form-label">Oração 2:</label>
-        <select name="oracao_2" id="oracao_2" class="form-select" required>
-            <option value="">Selecione...</option>
-            {% for o in oracoes %}
-            <option value="{{ o.id }}">{{ o.texto }}</option>
+        <label class="form-label">Unidade 2:</label>
+        <select name="unidade_2" class="form-control" required>
+            {% for u in unidades %}
+                <option value="{{ u.id }}">{{ u.texto }}</option>
             {% endfor %}
         </select>
     </div>
+
     <div class="mb-3">
-        <label for="observacoes" class="form-label">Observações:</label>
-        <textarea name="observacoes" id="observacoes" class="form-control" rows="2"></textarea>
+        <label class="form-label">Observações (opcional):</label>
+        <textarea name="observacoes" class="form-control" rows="3"></textarea>
     </div>
+
     <button type="submit" class="btn btn-success">Salvar Relação</button>
-    <a href="/" class="btn btn-secondary">Cancelar</a>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Voltar</a>
 </form>
+
 {% endblock %}

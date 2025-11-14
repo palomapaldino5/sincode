@@ -4,7 +4,7 @@ from noticias.models import Categoria, Autor, Noticia
 
 
 # função
-# se def dentro classe = metodo
+# se def dentro classe = método
 # se def fora classe = função
 def index(request):
     # return HttpResponse("<h1>Alô Django 2025</h1>")
@@ -43,5 +43,5 @@ def noticias_em_destaque(request):
     return render(
         request,
         'noticias/destaques.html',
-        {'noticias_destaque': noticias}  # Passa as notícias para o template
+        {'noticias_destaque': noticias}  # Passa as notícias para o modelo
     )

@@ -1,31 +1,39 @@
 {% extends 'coordenacoes/base.html' %}
+{% block title %}Relações Coordenativas{% endblock %}
 {% block content %}
-<h2>Relações Coordenativas</h2>
-<a href="{% url 'criar_oracao' %}" class="btn btn-primary mb-3">Nova Oração</a>
+
+<h2 class="mb-3">Relações Coordenativas</h2>
+
+<a href="{% url 'criar_unidade' %}" class="btn btn-primary mb-3">Nova Unidade Coordenada</a>
 <a href="{% url 'criar_relacao' %}" class="btn btn-success mb-3">Nova Relação</a>
 
 {% if relacoes %}
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Oração 1</th>
-        <th>Conector</th>
-        <th>Oração 2</th>
-        <th>Observações</th>
-    </tr>
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Unidade 1</th>
+            <th>Conector</th>
+            <th>Unidade 2</th>
+            <th>Observações</th>
+        </tr>
     </thead>
     <tbody>
     {% for r in relacoes %}
-    <tr>
-        <td>{{ r.oracao_1.texto }}</td>
-        <td>{{ r.conector.texto }} ({{ r.conector.tipo_relacao.nome }})</td>
-        <td>{{ r.oracao_2.texto }}</td>
-        <td>{{ r.observacoes }}</td>
-    </tr>
+        <tr>
+            <td>{{ r.unidade_1.texto }}</td>
+            <td>
+                {{ r.conector.texto }}
+                <small class="text-muted">({{ r.conector.tipo_relacao.nome }})</small>
+            </td>
+            <td>{{ r.unidade_2.texto }}</td>
+            <td>{{ r.observacoes }}</td>
+        </tr>
     {% endfor %}
     </tbody>
 </table>
 {% else %}
-<p>Nenhuma relação cadastrada ainda.</p>
+<p class="alert alert-warning">Nenhuma relação cadastrada ainda.</p>
 {% endif %}
+
 {% endblock %}
+

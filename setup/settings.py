@@ -83,19 +83,11 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sindcodigo',  # O nome do banco de dados MySQL que você criou
-        'USER': 'root',  # Seu usuário MySQL
-        'PASSWORD': '',  # Sua senha MySQL
-        'HOST': 'localhost',  # Ou o IP/nome do host onde o MySQL está rodando
-        'PORT': '3306',  # A porta do MySQL (3306 é a padrão)
-        # Outras opções podem ser adicionadas em 'OPTIONS' se necessário
-        # ... outras configurações ...
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -123,7 +115,6 @@ LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 
-USE_I18N = True
 
 USE_TZ = True
 

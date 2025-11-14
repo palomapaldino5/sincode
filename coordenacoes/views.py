@@ -1,38 +1,41 @@
 from django.shortcuts import render, redirect
-from .models import Oracao, RelacaoCoordenativa, Conector
+from .models import UnidadeCoordenada, ConectorCoordenativo, RelacaoCoordenativa
 
 
 def index(request):
     relacoes = RelacaoCoordenativa.objects.all().order_by('-id')
     return render(request, 'coordenacoes/index.html', {'relacoes': relacoes})
 
-def criar_oracao(request):
+
+def criar_unidade(request):
     if request.method == 'POST':
         texto = request.POST.get('texto')
         if texto:
-            Oracao.objects.create(texto=texto)
+            UnidadeCoordenada.objects.create(texto=texto)
             return redirect('index')
-    return render(request, 'coordenacoes/oracao_form.html')
+
+    return render(request, 'coordenacoes/unidade_form.html')
+
 
 def criar_relacao(request):
-    oracoes = Oracao.objects.all()
-    conectores = Conector.objects.all()
+    unidades = UnidadeCoordenada.objects.all()
+    conectores = ConectorCoordenativo.objects.all()
 
     if request.method == 'POST':
-        oracao_1_id = request.POST.get('oracao_1')
-        oracao_2_id = request.POST.get('oracao_2')
-        conector_id = request.POST.get('conector')
-        observacoes = request.POST.get('observacoes', '')
+        u1 = request.POST.get('unidade_1')
+        u2 = request.POST.get('unidade_2')
+        conector = request.POST.get('conector')
+        obs = request.POST.get('observacoes', '')
 
         RelacaoCoordenativa.objects.create(
-            oracao_1_id=oracao_1_id,
-            oracao_2_id=oracao_2_id,
-            conector_id=conector_id,
-            observacoes=observacoes
+            unidade_1_id=u1,
+            unidade_2_id=u2,
+            conector_id=conector,
+            observacoes=obs
         )
         return redirect('index')
 
     return render(request, 'coordenacoes/relacao_form.html', {
-        'oracoes': oracoes,
+        'unidades': unidades,
         'conectores': conectores
     })
