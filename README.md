@@ -85,7 +85,7 @@ A UC visa aplicar metodologias ágeis e tecnologias modernas para a criação de
 - Aprendemos um pouco sobre fórmularios HTML
 - Aprendemos a gerar um layout com Gemini Canvas
 - Referência Layout: https://gemini.google.com/share/907d04b81dd0
-- GitHub do projeto: https://github.com/romulodf-cesar/sindcode
+- GitHub do projeto: https://github.com/palomapaldino5/sincode.git
 -   /* 1. Definição das Cores Customizadas Bootstrap (Azul Escuro e Ciano) */
         :root {
            --bs-primary: #004080; /* Azul Escuro (Principal) */
