@@ -1,78 +1,110 @@
-{% extends 'noticias/base.html' %}  <!--DTL - Django Template Language -->
-{% load static  %}  <!--DTL - Django Template Language -->
+{% extends 'noticias/base.html' %}
+{% load static %}
 {% block content %}
 <div id="app" class="d-flex flex-column min-vh-100">
 
-    <!-- 2. Conteúdo Principal e Sidebar (Estrutura de Leitura) -->
     <main class="flex-grow-1 container-fluid container-lg py-5">
         <div class="row g-5">
 
-            <!-- Coluna Principal (Notícias e Textos) - Ocupa 2/3 da largura -->
+            <!-- COLUNA PRINCIPAL -->
             <div class="col-lg-8">
-                <h2 class="fs-3 fw-bold text-primary border-bottom border-info border-2 pb-2 mb-4">Últimas Notícias e Informes</h2>
+                <h2 class="fs-3 fw-bold text-primary border-bottom border-info border-2 pb-2 mb-4">
+                    Últimas Notícias e Informes
+                </h2>
 
-                <!-- Card de Destaque -->
-                <!-- Lista Destaque -->
+                <!-- ======================= -->
+                <!-- 1. NOTÍCIA DE DESTAQUE  -->
+                <!-- ======================= -->
                 {% if noticias %}
-                {% for noticia in noticias%}
-                   {% if noticia.destaque == '0' %}
-                <div class="card p-4 shadow-lg mb-4 news-card news-card-highlight">
-                        {% if noticia.foto == "" or noticia.foto == null%}
-                            <img src="{%static '/assets/imagens/noticias/notfound.png'%}" alt="foto não encontrada" class="d-none d-sm-block rounded-2 me-4" style="width: 160px; height: 140px; object-fit: cover;">
-                        {% else %}
-                             <img src="{{noticia.foto.url}}" alt="{{noticia.titulo}}" class="d-none d-sm-block rounded-2 me-4" style="width: 160px; height: 140px; object-fit: cover;">
-                        {% endif %}
-                    <div class="small text-muted mb-2">
-                        <span class="fw-bold text-info">DESTAQUE</span>
-                        <span>•</span>
-                        <span>{{noticia.data_publicacao}}</span>
-                    </div>
-                    <h3 class="fs-3 fw-bolder mb-3 lh-sm">
-                        <a href="#" class="text-primary text-decoration-none hover-info">
-                            {{noticia.titulo}}
-                        </a>
-                    </h3>
-                    <p class="text-secondary mb-4">
-                             {{noticia.conteudo}}
-                    </p>
-                    <a href="#" class="text-info fw-bold text-decoration-none d-flex align-items-center">
-                        Continuar lendo
-                        <svg class="ms-1" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </a>
-                </div>
-                   {% endif  %}
-               {% endfor %}
-               {% endif  %}
-                <!-- Lista de Notícias Secundárias -->
-              {% if noticias %}
-              {% for noticia in noticias|slice:"1:5" %}
-                <div class="d-grid gap-3">
-                    <!-- Notícia 1 -->
-                    <div class="d-flex bg-white p-3 news-card shadow-sm border-start border-white border-4 hover-border-info">
-                        {% if noticia.foto == "" or noticia.foto == null%}
-                            <img src="{%static '/assets/imagens/noticias/notfound.png'%}" alt="foto não encontrada" class="d-none d-sm-block rounded-2 me-4" style="width: 160px; height: 140px; object-fit: cover;">
-                        {% else %}
-                             <img src="{{noticia.foto.url}}" alt="{{noticia.titulo}}" class="d-none d-sm-block rounded-2 me-4" style="width: 160px; height: 140px; object-fit: cover;">
-                        {% endif %}
-                        <div class="flex-grow-1">
-                            <div class="small text-muted mb-1">{{noticia.categoria.nome}}</div>
-                            <h4 class="fs-5 fw-bold mb-1">
-                                <a href="{% url 'detalhe_noticia' noticia.id %}" class="text-dark text-decoration-none hover-info">
-                                    {{noticia.titulo}}
-                                </a>
-                            </h4>
-                            <p class="small text-secondary d-none d-md-block">
-                                  {{noticia.conteudo|truncatechars:150}}
-                                  Data da Publicação{{noticia.data_publicacao}}
-                                  Quem é {{noticia.autor.nome}} : {{noticia.autor.perfil}}
-                            </p>
-                        </div>
-                    </div>
-            </div>
-            {% endfor %}
-            {% endif  %}
+                    {% for noticia in noticias %}
+                        {% if noticia.destaque == '5' %}
+                            <div class="card p-4 shadow-lg mb-4 news-card news-card-highlight">
 
-                <!-- Botão Ver Mais Notícias -->
+                                {% if noticia.foto %}
+                                    <img src="{{ noticia.foto.url }}" class="d-none d-sm-block rounded-2 me-4"
+                                         style="width:160px; height:140px; object-fit:cover;">
+                                {% else %}
+                                    <img src="{% static 'assets/imagens/noticias/notfound.png' %}"
+                                         class="d-none d-sm-block rounded-2 me-4"
+                                         style="width:160px; height:140px; object-fit:cover;">
+                                {% endif %}
+
+                                <div class="small text-muted mb-2">
+                                    <span class="fw-bold text-info">DESTAQUE</span>
+                                    •
+                                    {{ noticia.data_publicacao }}
+                                </div>
+
+                                <h3 class="fs-3 fw-bolder mb-3 lh-sm">
+                                    <a href="{% url 'detalhe_noticia' noticia.id %}"
+                                       class="text-primary text-decoration-none hover-info">
+                                        {{ noticia.titulo }}
+                                    </a>
+                                </h3>
+
+                                <p class="text-secondary mb-4">
+                                    {{ noticia.conteudo|truncatechars:450 }}
+                                </p>
+
+                                <a href="{% url 'detalhe_noticia' noticia.id %}"
+                                   class="text-info fw-bold text-decoration-none d-flex align-items-center">
+                                    Continuar lendo
+                                    <svg class="ms-1" width="16" height="16" fill="none" stroke="currentColor"
+                                         viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </a>
+
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                <!-- ======================= -->
+                <!-- 2. NOTÍCIAS SECUNDÁRIAS -->
+                <!-- ======================= -->
+
+                {% if noticias %}
+                    <div class="d-grid gap-3">
+                        {% for noticia in noticias %}
+                            {% if noticia.destaque != '5' %}
+                                <div class="d-flex bg-white p-3 news-card shadow-sm border-start border-white border-4 hover-border-info">
+
+                                    {% if noticia.foto %}
+                                        <img src="{{ noticia.foto.url }}"
+                                             class="d-none d-sm-block rounded-2 me-4"
+                                             style="width:160px; height:140px; object-fit:cover;">
+                                    {% else %}
+                                        <img src="{% static 'assets/imagens/noticias/notfound.png' %}"
+                                             class="d-none d-sm-block rounded-2 me-4"
+                                             style="width:160px; height:140px; object-fit:cover;">
+                                    {% endif %}
+
+                                    <div class="flex-grow-1">
+                                        <div class="small text-muted mb-1">{{ noticia.categoria.nome }}</div>
+
+                                        <h4 class="fs-5 fw-bold mb-1">
+                                            <a href="{% url 'detalhe_noticia' noticia.id %}"
+                                               class="text-dark text-decoration-none hover-info">
+                                                {{ noticia.titulo }}
+                                            </a>
+                                        </h4>
+
+                                        <p class="small text-secondary d-none d-md-block">
+                                            {{ noticia.conteudo|truncatechars:150 }}<br>
+                                            Publicado em {{ noticia.data_publicacao }}<br>
+                                            Autor: {{ noticia.autor.nome }} — {{ noticia.autor.perfil }}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- BOTÃO -->
                 <div class="text-center pt-4">
                     <button class="btn btn-primary fw-semibold py-3 px-5 rounded-3 shadow-lg">
                         Carregar Mais Notícias
@@ -81,47 +113,66 @@
 
             </div>
 
-            <!-- Coluna Lateral (Sidebar) - Ocupa 1/3 da largura -->
+            <!-- SIDEBAR -->
             <div class="col-lg-4 d-grid gap-4">
 
-                <!-- Cartão de Cadastro/Associação -->
+                <!-- CADASTRO -->
                 <div class="card p-4 shadow-lg news-card-highlight">
                     <h3 class="fs-5 fw-bold mb-4 text-primary">Faça Parte do SINDCODE</h3>
+
                     <p class="text-secondary mb-4 small">
-                        Cadastre-se para ter acesso a benefícios exclusivos, assistência jurídica e manter-se informado sobre as lutas nos quadros do Sistema S. Preencha o formulário rápido abaixo.
+                        Cadastre-se para ter acesso a benefícios exclusivos, assistência jurídica e mais.
                     </p>
-                    <form onsubmit="return handleRegistration(event)">
+
+                    <form action="{% url 'cadastro' %}" method="post">
+                        {% csrf_token %}
+
+                        {% for field in form.visible_fields %}
                         <div class="mb-3">
-                            <input type="text" id="name" placeholder="Seu Nome Completo" required class="form-control form-control-lg rounded-3">
+                            {{ field.label_tag }}
+                            {{ field }}
+
+                            {% if field.errors %}
+                            <div class="text-danger small">
+                                {{ field.errors }}
+                            </div>
+                            {% endif %}
                         </div>
-                        <div class="mb-4">
-                            <input type="email" id="email" placeholder="Seu melhor E-mail" required class="form-control form-control-lg rounded-3">
-                        </div>
-                        <button type="submit" class="btn btn-info btn-lg w-100 text-white fw-bold rounded-3 shadow-sm">
+                        {% endfor %}
+
+                        <button type="submit"
+                                class="btn btn-info btn-lg w-100 text-white fw-bold rounded-3 shadow-sm">
                             Iniciar Cadastro Completo
                         </button>
                     </form>
+
+                    <!-- Mensagem dinâmica do Django -->
                     <p id="registration-message" class="mt-3 small text-center fw-bold"></p>
+
+                    <hr>
+
+                    <!-- 🔹 Botão de login -->
+                    <p class="text-center small mb-1">Já possui cadastro?</p>
+                    <a href="{% url 'login' %}"
+                       class="btn btn-outline-primary w-100 fw-semibold rounded-3">
+                        Fazer Login
+                    </a>
                 </div>
 
-                <!-- Destaques Rápidos -->
+
+                <!-- CONVÊNIOS -->
                 <div class="card p-4 shadow-lg">
                     <h3 class="fs-5 fw-bold mb-4 border-bottom pb-2 text-primary">Entidades e Convênios</h3>
                     <ul class="list-unstyled d-grid gap-2 small">
-                        <li>
-                            <a href="#" class="text-secondary text-decoration-none border-start border-4 border-white hover-border-info ps-2 fw-medium">SENAI, SESI e SENAC</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-secondary text-decoration-none border-start border-4 border-white hover-border-info ps-2 fw-medium">IEL e CNI</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-secondary text-decoration-none border-start border-4 border-white hover-border-info ps-2 fw-medium">Convênios Exclusivos para Associados</a>
-                        </li>
+                        <li><a href="#" class="text-secondary text-decoration-none border-start border-4 border-white hover-border-info ps-2 fw-medium">SENAI, SESI e SENAC</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none border-start border-4 border-white hover-border-info ps-2 fw-medium">IEL e CNI</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none border-start border-4 border-white hover-border-info ps-2 fw-medium">Convênios Exclusivos</a></li>
                     </ul>
                 </div>
+
             </div>
+
         </div>
     </main>
-
 </div>
 {% endblock %}

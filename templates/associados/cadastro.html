@@ -1,0 +1,135 @@
+{% extends "noticias/base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+
+                    <h2 class="text-center mb-4 fw-bold">Cadastro de Associado</h2>
+
+                    <form action="{% url 'cadastro' %}" method="post">
+                        {% csrf_token %}
+
+                        <!-- Nome completo -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Nome completo</label>
+                            <input type="text" class="form-control rounded-3" name="nome_completo" placeholder="Digite seu nome completo">
+                        </div>
+
+                        <!-- Nome social -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Nome social (como você prefere ser chamado/a)</label>
+                            <input type="text" class="form-control rounded-3" name="nome_social" placeholder="Digite seu nome social">
+                        </div>
+                        <!-- E-mail -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">E-mail</label>
+                            <input type="email" class="form-control rounded-3 shadow-sm"
+                                   name="email" placeholder="Digite seu e-mail" required>
+                        </div>
+
+
+                        <!-- Data de nascimento -->
+                        <div class="mb-3">
+                            <label for="data_nascimento" class="form-label fw-semibold">Data de nascimento</label>
+                            <input id="data_nascimento" name="data_nascimento" type="date" class="form-control rounded-3" required>
+                            <div class="form-text">Escolha sua data de nascimento</div>
+                        </div>
+
+                        <!-- Identidade de Gênero -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Qual sua identidade de gênero?</label>
+                            <select class="form-select rounded-3" name="genero" id="genero">
+                                <option value="" selected disabled>Escolha um gênero</option>
+                                <option value="Feminino">Feminino</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Não-binário">Não-binário</option>
+                                <option value="Trans feminino">Trans feminino</option>
+                                <option value="Trans masculino">Trans masculino</option>
+                                <option value="Outro">Outro</option>
+                                <option value="Prefiro não responder">Prefiro não responder</option>
+                            </select>
+                        </div>
+
+                        <!-- Campo: Outro gênero -->
+                        <div class="mb-3" id="genero-outro" style="display: none;">
+                            <label class="form-label fw-semibold">Selecione "Outro" acima e especifique</label>
+                            <input type="text" class="form-control rounded-3" name="genero_outro" placeholder="Especifique sua identidade de gênero">
+                        </div>
+
+                        <!-- Nome de usuário -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Usuário</label>
+                            <input type="text" class="form-control rounded-3" name="usuario" placeholder="Ex: Paloma5">
+                        </div>
+
+                        <!-- Senha -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Senha</label>
+                            <input type="password" class="form-control rounded-3" id="senha" name="senha" placeholder="Digite sua senha" required>
+                        </div>
+
+                        <!-- Confirmar Senha -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Confirmar Senha</label>
+                            <input type="password" class="form-control rounded-3" id="confirmar_senha" name="confirmar_senha" placeholder="Repita sua senha" required>
+                        </div>
+
+                        <!-- Botão -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary rounded-3 fw-semibold px-4 py-2">
+                                Cadastrar
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Validação: senha igual -->
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+    const senha = document.getElementById("senha").value;
+    const confirmar = document.getElementById("confirmar_senha").value;
+
+    if (senha !== confirmar) {
+        e.preventDefault();
+        alert("As senhas não coincidem. Verifique e tente novamente.");
+    }
+});
+</script>
+
+<!-- SCRIPT: mínimo e máximo da data -->
+<script>
+(function() {
+  const input = document.getElementById('data_nascimento');
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+
+  input.max = `${yyyy}-${mm}-${dd}`;
+  input.min = `${yyyy - 120}-${mm}-${dd}`;
+})();
+</script>
+
+<!-- SCRIPT: mostrar campo "Outro" -->
+<script>
+document.getElementById("genero").addEventListener("change", function() {
+    document.getElementById("genero-outro").style.display =
+        this.value === "Outro" ? "block" : "none";
+});
+</script>
+
+
+{% endblock %}
+

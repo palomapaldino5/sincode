@@ -1,0 +1,52 @@
+{% extends "noticias/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+
+                    <h2 class="text-center mb-4 fw-bold">Login</h2>
+
+                    {% if messages %}
+                        {% for msg in messages %}
+                            <div class="alert alert-danger">{{ msg }}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <!-- FORMULÁRIO CORRETO -->
+                    <form action="{% url 'login' %}" method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Usuário</label>
+                            <input type="text" name="usuario" class="form-control rounded-3" placeholder="Digite seu usuário" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Senha</label>
+                            <input type="password" name="senha" class="form-control rounded-3" placeholder="Digite sua senha" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 rounded-3 fw-semibold">
+                            Entrar
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p class="small mb-1">Ainda não tem cadastro?</p>
+                        <a href="{% url 'cadastro' %}" class="btn btn-outline-secondary w-100 rounded-3 fw-semibold">
+                            Criar Conta
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
