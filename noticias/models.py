@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Categoria(models.Model):
     nome = models.CharField(max_length=80, null=False, blank=False)
 
@@ -12,14 +13,14 @@ class Autor(models.Model):
     perfil = models.TextField()
 
     def __str__(self):
-        return self.nome
+        return self.nome + self.perfil
 
 
 class Noticia(models.Model):
     titulo = models.CharField(max_length=90, null=False, blank=False)
     conteudo = models.TextField(null=False, blank=False)
+    # Define a data e hora na criação do objeto, útil para publicações
     data_publicacao = models.DateTimeField(auto_now_add=True)
-
     destaque = models.CharField(
         max_length=2,
         choices=[
@@ -28,35 +29,40 @@ class Noticia(models.Model):
             ('2', '2'),
             ('3', '3'),
             ('4', '4'),
-            ('5', '5'),
+            ('5', '5')  # <--- MUST BE ADDED TO CHOICES
         ],
-        default='5'
+        default='5',  # <--- DEFAULT VALUE SET HERE
+        null=False,
+        blank=False
     )
-
     foto = models.ImageField(upload_to="fotos/%Y/%m/%d/", blank=False)
-
     autor = models.ForeignKey(
         Autor,
-        on_delete=models.CASCADE,
-        related_name='noticias_autor'
-    )
+        on_delete=models.CASCADE,  # Se o Autor for deletado, todas as suas notícias também serão.
+        related_name='noticias_autor',  # Nome do relacionamento reverso (autor.noticias.all())
+        null=False,  # criar campo autor_id
 
+    )
+    # relacionamento de 1:N
     categoria = models.ForeignKey(
         Categoria,
-        on_delete=models.CASCADE,
-        related_name='noticias_categoria'
+        on_delete=models.CASCADE,  # Se a Categoria for deletada, todas as notícias dessa categoria também serão.
+        related_name='noticias_categoria',  # Nome do relacionamento reverso (categoria.noticias.all())
+        null=False,  # criar campo categoria_id
+
     )
 
     def __str__(self):
         return self.titulo
 
+
 # estudar o que é ORM (object-relation-mapper)# herança: uma classe herda de outra e implementa suas próprias características
 # Filho(Pai) - utilizo o sinal de (   ) para herança
-#a classe é um conjunto de objetos
- #toda classe começa com letra Maíscula(PascalCase)
-        # max_lenght: é o número limite de caracteres
-          # null: nenhuma informação
-          # blank: string vazia " "   
+# a classe é um conjunto de objetos
+# toda classe começa com letra Maíscula(PascalCase)
+# max_lenght: é o número limite de caracteres
+# null: nenhuma informação
+# blank: string vazia " "
 
 # Django ORM
 
@@ -65,7 +71,6 @@ class Noticia(models.Model):
 # Java: Hibernate
 # C#: Entity Framework
 # PHP : Doctrine
-
 
 
 # vantagem:
@@ -88,7 +93,7 @@ class Noticia(models.Model):
      Mas é mais comum e recomendado deixar o padrão.
          # O equivalente ao VARCHAR(80)
         # Recomenda-se adicionar blank=True ou null=True se for opcional
-        
+
            # O equivalente ao TEXT no MySQL
         # O campo TextField é usado para grandes quantidades de texto.
         # Recomenda-se adicionar blank=True ou null=True se for opcional
@@ -114,5 +119,4 @@ class Noticia(models.Model):
      # Representação em string do objeto, útil no console e no Django Admin
 
 """
-
 
