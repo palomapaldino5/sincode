@@ -1,19 +1,24 @@
-from django.shortcuts import render,get_object_or_404
-from noticias.models import Categoria, Autor,Noticia
+from django.shortcuts import render, get_object_or_404
+from noticias.models import Categoria, Autor, Noticia
 from django.db.models import Q
+
 
 def categorias(request):
     categorias = Categoria.objects.all()
     return render(request,
                   'noticias/index.html',
-                  {'cards':categorias})
+                  {'cards': categorias})
+
+
 def autores(request):
     autores = Autor.objects.all()
-    return render(request,'noticias/nossos_autores.html',{'autores':autores})
+    return render(request, 'noticias/nossos_autores.html', {'autores': autores})
+
 
 def index(request):
     noticias = Noticia.objects.all()
-    return render(request,'noticias/index.html',{'noticias':noticias})
+    return render(request, 'noticias/index.html', {'noticias': noticias})
+
 
 def buscar(request):
     noticias = Noticia.objects.all()
@@ -32,7 +37,8 @@ def buscar(request):
         else:
             # Se não houver termo de busca, retorne todas as notícias
             noticias = Noticia.objects.all()
-    return render(request,'noticias/buscar.html',{'noticias':noticias})
+    return render(request, 'noticias/buscar.html', {'noticias': noticias})
+
 
 def detalhe_noticia(request, noticia_id):
     noticia_principal = get_object_or_404(Noticia, pk=noticia_id)
@@ -42,6 +48,8 @@ def detalhe_noticia(request, noticia_id):
         'ultimas_noticias': ultimas_noticias
     }
     return render(request, 'noticias/detalhe_noticia.html', contexto)
+
+
 """
 def noticias_em_destaque(request):
     # 1. Consulta: Filtra notícias onde 'destaque' é igual a '5'
@@ -56,7 +64,6 @@ def noticias_em_destaque(request):
 
 """
 
-
 # função
 # se def dentro classe = metodo
 # se def fora classe = função
@@ -65,7 +72,7 @@ def noticias_em_destaque(request):
   #return HttpResponse("<h1>Alô Django 2025</h1>")
 
     # definindo um mock com dict
- 
+
      dados ={
        1:{"titulo":"mulheres dev",
           "conteudo":"mulheres programadores em python",
@@ -78,4 +85,3 @@ def noticias_em_destaque(request):
             "data_publicacao": "12/10/2025"},
     }
 """
-

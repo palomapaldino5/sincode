@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>O Usuário vai ver os benefícios</title>
+</head>
+<body>
+
+    {% csrf_token %}
+
+    {% for message in messages %}
+        <div>
+            <p id="messages">{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    <p>Aproveite os nossos benefícios….</p>
+
+</body>
+</html>
